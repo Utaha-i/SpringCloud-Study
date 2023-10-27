@@ -1,0 +1,49 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment #微服务应用的名字
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver  #mysql驱动包
+    url: jdbc:mysql://localhost:3306/estore?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false #useSSL安全加固
+    username: root
+    password: root
+  jackson:
+    serialization:
+      write-bigdecimal-as-plain: true
+
+# springboot 默认的日志级别是 info
+logging:
+  # 声明指定的feign service 服务的日志级别为debug，可以打印出服务调用的详情
+  level:
+    # 服务接口client所在的包路径
+    com.utaha.kazusa: debug
+# feign日志打印类型FULL
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.test.springcloud.entitites
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+eureka:
+  client:
+    register-with-eureka: true #向注册中心注册自己
+    fetch-registry: true #从EurekaServer抓取已有的注册信息，集群必须设置成true，才能配合ribbon负载均衡
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    #Eureka客户端向服务器发送心跳的时间间隔，默认30s
+    lease-renewal-interval-in-seconds: 30
+    #Eureka服务器在最后一次收到心跳后等待时间上限，默认90s超时则剔除服务
+    lease-expiration-duration-in-seconds: 90
+
