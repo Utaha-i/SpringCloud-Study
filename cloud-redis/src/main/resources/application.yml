@@ -1,0 +1,27 @@
+server:
+  port: 8031
+
+spring:
+  application:
+    name: cloud-redis #微服务应用的名字
+  # Redis配置
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 1
+      # 读超时
+      timeout: 3000
+      # 连接超时
+      connectTimeout: 5000
+      # Lettuce连接池
+      lettuce:
+        pool:
+          # 最小空闲连接
+          min-idle: 5
+          # 最大空闲连接
+          max-idle: 10
+          # 最大连接数
+          max-active: 100
+          # 连接分配应该阻塞的最大时间
+          max-wait: 2000
