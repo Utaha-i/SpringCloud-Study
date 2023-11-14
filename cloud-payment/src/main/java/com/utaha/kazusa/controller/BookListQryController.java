@@ -8,6 +8,7 @@ import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class BookListQryController {
     private BookListQryService bookListQryService;
 
     @GetMapping("/listQry")
-    public BookListQryResponseDto query(@RequestBody BookListQryRequestDto reqDto) {
+    public BookListQryResponseDto query(@Valid @RequestBody BookListQryRequestDto reqDto) {
         BookListQryRequestBo requestBo = BookLIstQryConverter.Instance.convert(reqDto.getBody());
         BookListQryResponseBo responseBo = bookListQryService.bookListQry(requestBo);
         BookListQryResponseDto responseDto = new BookListQryResponseDto();

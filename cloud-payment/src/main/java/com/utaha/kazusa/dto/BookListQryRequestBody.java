@@ -2,21 +2,31 @@ package com.utaha.kazusa.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
 public class BookListQryRequestBody {
 
+
+    @JsonProperty("Test")
+    @Size(min = 2, max = 2, message = "长度不匹配")
+    private String test;
+
+    @JsonProperty("Price")
+    @Min(value = 0)
+    @Max(value = 10)
+    private BigDecimal price;
+
     @JsonProperty("BeginPubDate")
-    @Size(min = 10, max = 10)
     private LocalDate beginPubDate;
 
     @JsonProperty("EndPubDate")
-    @Size(min = 10, max = 10)
     private LocalDate endPubDate;
 
     @JsonProperty("BeginPage")
