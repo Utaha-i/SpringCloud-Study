@@ -36,6 +36,7 @@
         <fastjson.version>2.0.31</fastjson.version>
         <org.yaml.verison>2.0</org.yaml.verison>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <hutool.version>5.8.18</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -120,6 +121,12 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
+            </dependency>
+            <!--糊涂-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

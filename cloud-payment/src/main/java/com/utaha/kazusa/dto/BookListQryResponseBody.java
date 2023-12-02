@@ -1,6 +1,7 @@
 package com.utaha.kazusa.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -22,6 +23,7 @@ public class BookListQryResponseBody {
 
     @Data
     @NoArgsConstructor
+    @Valid
     public static final class BookMsg {
         @JsonProperty("id")
         @NotNull
