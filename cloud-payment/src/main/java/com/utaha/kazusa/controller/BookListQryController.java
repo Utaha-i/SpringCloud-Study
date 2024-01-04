@@ -1,29 +1,26 @@
 package com.utaha.kazusa.controller;
 
+import com.utaha.kazusa.api.BookQryApi;
 import com.utaha.kazusa.convert.book.BookLIstQryConverter;
-import com.utaha.kazusa.dto.BookListQryRequestDto;
-import com.utaha.kazusa.dto.BookListQryResponseBody;
-import com.utaha.kazusa.dto.BookListQryResponseDto;
+import com.utaha.kazusa.dto.book.BookListQryRequestDto;
+import com.utaha.kazusa.dto.book.BookListQryResponseBody;
+import com.utaha.kazusa.dto.book.BookListQryResponseDto;
 import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/book")
 @Slf4j
-public class BookListQryController {
+public class BookListQryController implements BookQryApi {
 
     @Resource
     private BookListQryService bookListQryService;
 
-    @GetMapping("/listQry")
     public BookListQryResponseDto query(@Valid @RequestBody BookListQryRequestDto reqDto) {
         BookListQryRequestBo requestBo = BookLIstQryConverter.Instance.convert(reqDto.getBody());
         BookListQryResponseBo responseBo = bookListQryService.bookListQry(requestBo);

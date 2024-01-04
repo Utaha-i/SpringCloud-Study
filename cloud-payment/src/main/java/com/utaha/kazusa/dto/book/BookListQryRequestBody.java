@@ -1,4 +1,4 @@
-package com.utaha.kazusa.dto;
+package com.utaha.kazusa.dto.book;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Max;

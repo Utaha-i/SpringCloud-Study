@@ -5,10 +5,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.utaha.kazusa.convert.book.BookLIstQryConverter;
 import com.utaha.kazusa.dao.mapper.EsBookMapper;
 import com.utaha.kazusa.dao.model.EsBook;
-import com.utaha.kazusa.dto.BookListQryResponseBody;
+import com.utaha.kazusa.dto.book.BookListQryResponseBody;
 import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * 查询书籍列表
  */
 @Service
 public class BookListQryServiceImpl implements BookListQryService {

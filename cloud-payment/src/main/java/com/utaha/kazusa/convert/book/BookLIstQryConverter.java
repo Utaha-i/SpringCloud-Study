@@ -1,8 +1,8 @@
 package com.utaha.kazusa.convert.book;
 
 import com.utaha.kazusa.dao.model.EsBook;
-import com.utaha.kazusa.dto.BookListQryRequestBody;
-import com.utaha.kazusa.dto.BookListQryResponseBody;
+import com.utaha.kazusa.dto.book.BookListQryRequestBody;
+import com.utaha.kazusa.dto.book.BookListQryResponseBody;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
 import org.mapstruct.Mapper;

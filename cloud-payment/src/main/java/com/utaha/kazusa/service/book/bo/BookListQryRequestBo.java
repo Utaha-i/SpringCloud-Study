@@ -1,6 +1,6 @@
 package com.utaha.kazusa.service.book.bo;
 
-import com.utaha.kazusa.dto.BookListQryRequestBody;
+import com.utaha.kazusa.dto.book.BookListQryRequestBody;
 import lombok.Data;
 
 @Data
