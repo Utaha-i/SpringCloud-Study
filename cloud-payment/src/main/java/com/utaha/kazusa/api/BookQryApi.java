@@ -1,7 +1,7 @@
 package com.utaha.kazusa.api;
 
-import com.utaha.kazusa.dto.book.BookListQryRequestDto;
-import com.utaha.kazusa.dto.book.BookListQryResponseDto;
+import com.utaha.kazusa.api.dto.book.BookListQryRequestDto;
+import com.utaha.kazusa.api.dto.book.BookListQryResponseDto;
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;

@@ -5,15 +5,16 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.utaha.kazusa.convert.book.BookLIstQryConverter;
 import com.utaha.kazusa.dao.mapper.EsBookMapper;
 import com.utaha.kazusa.dao.model.EsBook;
-import com.utaha.kazusa.dto.book.BookListQryResponseBody;
+import com.utaha.kazusa.api.dto.book.BookListQryResponseBody;
 import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
-import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * 查询书籍列表
  */
 @Service
+@Slf4j
 public class BookListQryServiceImpl implements BookListQryService {
 
     @Autowired
@@ -39,12 +41,10 @@ public class BookListQryServiceImpl implements BookListQryService {
         ArrayList<BookListQryResponseBody.BookMsg> bookMsgArray = new ArrayList<>();
         for (EsBook esBook : esBooks) {
             BookListQryResponseBody.BookMsg bookMsg = BookLIstQryConverter.Instance.convert(esBook);
+            BigDecimal bigDecimal = esBook.getPrice().setScale(2, RoundingMode.HALF_UP);
+            log.error("*****" + bigDecimal);
             bookMsgArray.add(bookMsg);
         }
-        EsBook esBook = new EsBook();
-        esBook.setName("测试123");
-        esBook.setPrice(new BigDecimal("1222.30"));
-        esBook.setAuthor("测试作者");
         resBo.setBookMsgArray(bookMsgArray);
         resBo.setTotalNo(Math.toIntExact(esBookPage.getTotal()));
         return resBo;

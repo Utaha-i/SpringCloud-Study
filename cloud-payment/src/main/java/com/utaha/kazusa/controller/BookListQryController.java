@@ -2,9 +2,9 @@ package com.utaha.kazusa.controller;
 
 import com.utaha.kazusa.api.BookQryApi;
 import com.utaha.kazusa.convert.book.BookLIstQryConverter;
-import com.utaha.kazusa.dto.book.BookListQryRequestDto;
-import com.utaha.kazusa.dto.book.BookListQryResponseBody;
-import com.utaha.kazusa.dto.book.BookListQryResponseDto;
+import com.utaha.kazusa.api.dto.book.BookListQryRequestDto;
+import com.utaha.kazusa.api.dto.book.BookListQryResponseBody;
+import com.utaha.kazusa.api.dto.book.BookListQryResponseDto;
 import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;

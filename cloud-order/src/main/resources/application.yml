@@ -11,6 +11,19 @@ spring:
     username: root
     password: root
 
+# springboot 默认的日志级别是 info
+logging:
+  # 声明指定的feign service 服务的日志级别为debug，可以打印出服务调用的详情
+  level:
+    # 服务接口client所在的包路径
+    com.utaha.kazusa: debug
+# feign日志打印类型FULL
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔
