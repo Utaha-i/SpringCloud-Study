@@ -41,7 +41,8 @@ public class BookListQryServiceImpl implements BookListQryService {
         ArrayList<BookListQryResponseBody.BookMsg> bookMsgArray = new ArrayList<>();
         for (EsBook esBook : esBooks) {
             BookListQryResponseBody.BookMsg bookMsg = BookLIstQryConverter.Instance.convert(esBook);
-            BigDecimal bigDecimal = esBook.getPrice().setScale(2, RoundingMode.HALF_UP);
+            log.error("*****" + esBook.getPrice());
+            BigDecimal bigDecimal = esBook.getPrice().setScale(0, RoundingMode.HALF_UP);
             log.error("*****" + bigDecimal);
             bookMsgArray.add(bookMsg);
         }

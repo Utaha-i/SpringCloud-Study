@@ -19,7 +19,7 @@ public @interface RepeatSubmit {
      */
     long lockTime() default 5L;
     /**
-     * 防重提交，支持两种，一个是方法参数，一个是令牌
+     * 内部类：防重提交，支持两种，一个是方法参数，一个是令牌
      */
     enum Type { PARAM, TOKEN }
 }

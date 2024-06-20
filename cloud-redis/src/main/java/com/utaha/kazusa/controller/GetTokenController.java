@@ -1,6 +1,5 @@
 package com.utaha.kazusa.controller;
 
-import com.utaha.kazusa.constant.RedisKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import static com.utaha.kazusa.constant.RedisKey.SUBMIT_ORDER_TOKEN_KEY;
 
 @RestController
 @RequestMapping("redis")
@@ -31,7 +32,7 @@ public class GetTokenController {
         String token = getStringNumRandom(32);
         //key的组成
         //order:submit:18703442948:Jrvkp8KCxN5HH8x40fyrAcy7kilYBHYf
-        String key = String.format(RedisKey.SUBMIT_ORDER_TOKEN_KEY, accountNo, token);
+        String key = String.format(SUBMIT_ORDER_TOKEN_KEY, accountNo, token);
         //令牌有效时间是30分钟
         redisTemplate.opsForValue().set(key, String.valueOf(Thread.currentThread().getId()), 30, TimeUnit.MINUTES);
         return token;

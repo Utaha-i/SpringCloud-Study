@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit;
 public class RepeatSubmitAspect {
     @Autowired
     private StringRedisTemplate redisTemplate;
-    @Autowired
-    private RedissonClient redissonClient;
+//    @Autowired
+//    private RedissonClient redissonClient;
 
     /**
      * 定义 @Pointcut注解表达式, 通过特定的规则来筛选连接点, 就是Pointcut，选中那几个你想要的方法
@@ -83,9 +83,9 @@ public class RepeatSubmitAspect {
             //加锁
             // 这种也可以 本博客也介绍下redisson的使用
             // res  = redisTemplate.opsForValue().setIfAbsent(key, "1", lockTime, TimeUnit.SECONDS);
-            RLock lock = redissonClient.getLock(key);
+//            RLock lock = redissonClient.getLock(key);
             // 尝试加锁，最多等待0秒，上锁以后5秒自动解锁 [lockTime默认为5s, 可以自定义]
-            res = lock.tryLock(0, lockTime, TimeUnit.SECONDS);
+//            res = lock.tryLock(0, lockTime, TimeUnit.SECONDS);
         } else {
             //方式二，令牌形式防重提交
             String requestToken = request.getHeader("request-token");

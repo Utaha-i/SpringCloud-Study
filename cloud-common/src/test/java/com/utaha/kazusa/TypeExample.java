@@ -30,11 +30,11 @@ public class TypeExample {
         //获取接口类型信息
         Type[] genericInterfaces = clazz.getGenericInterfaces();
         for (Type genericInterface : genericInterfaces)
-            System.out.println("Generic Interface：" + genericInterface.getTypeName());
+            System.out.println("获取接口类型信息-Generic Interface：" + genericInterface.getTypeName());
 
         //打印Type的具体类型
         for (Type genericInterface : genericInterfaces)
-            System.out.println("Type Class：" + genericInterface.getClass().getName());
+            System.out.println("Type的具体类型-Type Class：" + genericInterface.getClass().getName());
 
         //todo 怎么取类的未擦除的泛型信息呢？
         for (Type genericInterface : genericInterfaces) {
