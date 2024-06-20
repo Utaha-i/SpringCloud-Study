@@ -7,9 +7,9 @@ spring:
   # Redis配置
   data:
     redis:
-      host: 127.0.0.1     # Redis服务器地址
+      host: localhost     # Redis服务器地址
       port: 6379          # Redis服务器连接端口
-      password: root      # Redis服务器连接密码（默认为空）
+      password:           # Redis服务器连接密码（默认为空）
       database: 0         # Redis数据库索引（默认为0）
       timeout: 60s        # 连接空闲超过N(s秒、ms毫秒，不加单位时使用毫秒)后关闭，0为禁用，这里配置值和tcp-keepalive值一致
       # Lettuce连接池配置

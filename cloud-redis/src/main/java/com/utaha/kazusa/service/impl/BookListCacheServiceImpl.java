@@ -15,7 +15,7 @@ import static com.utaha.kazusa.constant.RedisKey.BOOK_LIST_KEY;
 @Service
 public class BookListCacheServiceImpl implements BookListCacheService {
 
-//    @Autowired
+    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
     @Override
