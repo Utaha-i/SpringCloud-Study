@@ -38,7 +38,7 @@
         <fastjson.version>2.0.31</fastjson.version>
         <org.yaml.verison>2.0</org.yaml.verison>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
-        <hutool.version>5.8.18</hutool.version>
+        <hutool.version>5.8.25</hutool.version>
         <jol-core.version>0.17</jol-core.version>
     </properties>
 
