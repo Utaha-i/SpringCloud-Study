@@ -9,8 +9,11 @@ import com.utaha.kazusa.api.dto.book.BookListQryResponseBody;
 import com.utaha.kazusa.service.book.BookListQryService;
 import com.utaha.kazusa.service.book.bo.BookListQryRequestBo;
 import com.utaha.kazusa.service.book.bo.BookListQryResponseBo;
+import com.utaha.kazusa.service.demo.Play;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -27,6 +30,9 @@ public class BookListQryServiceImpl implements BookListQryService {
 
     @Autowired
     private EsBookMapper esBookMapper;
+
+    @Resource(name = "playImpl1")
+    private Play play;
 
     @Override
     public BookListQryResponseBo bookListQry(BookListQryRequestBo reqBo) {

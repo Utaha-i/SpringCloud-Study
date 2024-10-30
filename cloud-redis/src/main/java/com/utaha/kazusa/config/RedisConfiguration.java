@@ -1,5 +1,7 @@
 package com.utaha.kazusa.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -25,13 +27,26 @@ public class RedisConfiguration {
      * 设置序列化和反序列化
      */
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(redisConnectionFactory);
-        // 设置key的序列化器
+        template.setConnectionFactory(connectionFactory);
+        // 使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
-        // 设置value的序列化器，使用Jackson2来处理对象序列化
-        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+
+        /*
+          这个错误提示是因为在使用Spring Data Redis时，尝试将包含java.time.LocalDateTime类型的对象序列化为JSON时出现了问题。
+          java.time包下的日期时间类型（如LocalDateTime）在默认情况下不被Jackson库支持，而Jackson是Spring Data Redis用于序列化和反序列化JSON的默认库。
+          为了解决这个问题，你需要添加jackson-datatype-jsr310这个模块到你的项目中，该模块提供了对Java 8日期时间API的支持。
+         */
+        ObjectMapper om = new ObjectMapper();
+        om.registerModule(new JavaTimeModule());
+        GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer(om);
+        template.setValueSerializer(serializer);
+
+        // 如果需要的话，还可以设置hash key和value的序列化器
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(serializer);
+
         template.afterPropertiesSet();
         return template;
     }
